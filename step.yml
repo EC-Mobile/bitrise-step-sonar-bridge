@@ -1,0 +1,113 @@
+title: |-
+  Sonar Scanner
+summary: |
+  Post a comment to `bitrise-step-sonar` repository in order to trigger a sonar scan job on Jenkins.
+description: |
+  Post a comment to `bitrise-step-sonar` repository in order to trigger a sonar scan job on Jenkins.
+website: https://github.com/astromonkee/bitrise-step-sonar
+source_code_url: https://github.com/astromonkee/bitrise-step-sonar
+support_url: https://github.com/astromonkee/bitrise-step-sonar
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+project_type_tags:
+   - ios
+   - macos
+   - android
+type_tags:
+  - utility
+is_requires_admin_user: true
+is_always_run: false
+is_skippable: false
+run_if: ""
+deps:
+  brew:
+  - name: git
+  - name: wget
+  apt_get:
+  - name: git
+  - name: wget
+toolkit:
+  bash:
+    entry_file: step.sh
+inputs:
+  - workspace: 
+    opts:
+      title: "Workspace"
+      description: |
+        The `.xcworkspace` path, relative to
+        the Working directory.
+      is_expand: true
+      is_required: true
+  - project: 
+    opts:
+      title: "Project"
+      description: |
+        The `.xcodeproj` path, relative to
+        the Working directory.
+      is_expand: true
+      is_required: true
+  - scheme: 
+    opts:
+      title: "Project Scheme"
+      description: |
+        The name of the project scheme.
+      is_expand: true
+      is_required: true
+  - project_repository_url:
+    opts:
+      title: "Project repository HTTPS URL"
+      description: |
+        HTTPS URL of the project repository. Sonar-scanner will perform the scan on this repository.
+      is_expand: true
+      is_required: true
+  - gitpub_sonar_bridge_host:
+    opts:
+      title: "Gitpub host"
+      description: |
+        The host address of Gitpub REST API.
+      is_expand: true
+      is_required: true
+  - gitpub_sonar_bridge_owner:
+    opts:
+      title: "Gitpub sonar-bridge owner"
+      description: |
+        The project owner of the repository used to trigger the sonar scanner job on Jenkins.
+      is_expand: true
+      is_required: true
+  - gitpub_sonar_bridge_repo:
+    opts:
+      title: "Gitpub sonar-bridge repository name"
+      description: |
+        The repository name of the repository used to trigger the sonar scanner job on Jenkins.
+      is_expand: true
+      is_required: true
+  - gitpub_sonar_bridge_commit_id:
+    opts:
+      title: "Gitpub sonar-bridge commit ID"
+      description: |
+        The commit ID in the sonar-bridge repository to post a comment in order to trigger the sonar scanner job on Jenkins.
+      is_expand: true
+      is_required: true
+  - gitpub_sonar_bridge_file_path:
+    opts:
+      title: "Gitpub sonar-bridge file path"
+      description: |
+        The file path in the sonar-bridge repository to post a comment in order to trigger the sonar scanner job on Jenkins.
+      is_expand: true
+      is_required: true
+  - gitpub_username: $GITPUB_USERNAME
+    opts:
+      title: "Gitpub username"
+      description: |
+        The username when authenticating with the Gitpub REST API.
+      is_expand: true
+      is_required: true
+  - gitpub_password: $GITPUB_PASSWORD
+    opts:
+      title: "Gitpub password"
+      description: |
+        The password when authenticating with the Gitpub REST API.
+      is_expand: true
+      is_required: true
+      is_sensitive: true

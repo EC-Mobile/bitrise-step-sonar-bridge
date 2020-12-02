@@ -1,0 +1,35 @@
+format_version: 4
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+app:
+  envs:
+  # An example secret param, define it (A_SECRET_PARAM) in .bitrise.secrets.yml
+  - GITPUB_PASSWORD: $GITPUB_PASSWORD
+  
+workflows:
+  test:
+    steps:
+    - change-workdir:
+        title: Switch working dir to test / _tmp dir
+        description: |-
+          To prevent step testing issues, like referencing relative
+          files with just './some-file' in the step's code, which would
+          work for testing the step from this directory directly
+          but would break if the step is included in another `bitrise.yml`.
+        run_if: true
+        inputs:
+        - path: ./_tmp
+        - is_create_path: true
+    - path::./:
+        inputs:
+        - workspace: ""
+        - project: ""
+        - scheme: ""
+        - project_repository_url: ""
+        - gitpub_sonar_bridge_host: ""
+        - gitpub_sonar_bridge_owner: ""
+        - gitpub_sonar_bridge_repo: ""
+        - gitpub_sonar_bridge_commit_id: ""
+        - gitpub_sonar_bridge_file_path: ""
+        - gitpub_username: ""
+        - gitpub_password: ""
