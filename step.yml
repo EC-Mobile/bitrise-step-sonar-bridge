@@ -54,6 +54,13 @@ inputs:
         The name of the project scheme.
       is_expand: true
       is_required: true
+  - binary_basename:
+    opts:
+      title: "Binary Basename"
+      description: |
+        The name of the binary.
+      is_expand: true
+      is_required: true
   - project_repository_url:
     opts:
       title: "Project repository HTTPS URL"
