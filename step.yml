@@ -38,7 +38,7 @@ inputs:
         The `.xcworkspace` path, relative to
         the Working directory.
       is_expand: true
-      is_required: true
+      is_required: false
   - project: 
     opts:
       title: "Project"
@@ -46,21 +46,21 @@ inputs:
         The `.xcodeproj` path, relative to
         the Working directory.
       is_expand: true
-      is_required: true
+      is_required: false
   - scheme: 
     opts:
       title: "Project Scheme"
       description: |
         The name of the project scheme.
       is_expand: true
-      is_required: true
+      is_required: false
   - binary_basename:
     opts:
       title: "Binary Basename"
       description: |
         The name of the binary.
       is_expand: true
-      is_required: true
+      is_required: false
   - project_repository_url:
     opts:
       title: "Project repository HTTPS URL"
