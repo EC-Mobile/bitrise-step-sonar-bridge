@@ -31,27 +31,42 @@ toolkit:
   bash:
     entry_file: step.sh
 inputs:
-  - workspace: 
+  - platform: 
     opts:
-      title: "Workspace"
+      title: "Platform"
+      description: |
+        `ios` or `android`.
+      is_expand: true
+      is_required: true
+  - ios_workspace: 
+    opts:
+      title: "iOS Workspace"
       description: |
         The `.xcworkspace` path, relative to
         the Working directory.
       is_expand: true
       is_required: false
-  - project: 
+  - ios_project: 
     opts:
-      title: "Project"
+      title: "iOS Project"
       description: |
         The `.xcodeproj` path, relative to
         the Working directory.
       is_expand: true
       is_required: false
-  - scheme: 
+  - ios_scheme: 
     opts:
-      title: "Project Scheme"
+      title: "iOS Project Scheme"
       description: |
         The name of the project scheme.
+      is_expand: true
+      is_required: false
+  - android_jacoco_xml: 
+    opts:
+      title: "Android Jacoco XML Report"
+      description: |
+        The Jacoco XML report pathm relative to
+        the project directory.
       is_expand: true
       is_required: false
   - binary_basename:

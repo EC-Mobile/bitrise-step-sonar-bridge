@@ -22,9 +22,11 @@ workflows:
         - is_create_path: true
     - path::./:
         inputs:
-        - workspace: ""
-        - project: ""
-        - scheme: ""
+        - platform: "ios"
+        - ios_workspace: ""
+        - ios_project: ""
+        - ios_scheme: ""
+        - android_jacoco_xml: "$MODULE/build/reports/jacoco/unitTestCoverage/unitTestCoverage.xml"
         - project_repository_url: ""
         - gitpub_sonar_bridge_host: ""
         - gitpub_sonar_bridge_owner: ""
